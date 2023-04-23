@@ -13,6 +13,14 @@ sum = 0
 priceLatte = 250
 priceCappucino = 300
 priceEspresso = 150
+
+def payment(quarter, dime, nickel, penny, sum = 0) -> int:
+        sum = sum + (quarter * 25)
+        sum = sum + (dime*10)
+        sum = sum + (nickel*5)
+        sum = sum + (penny*1)
+        return sum
+     
 while state:
 
     choice = input("What would you like? (espresso/latte/cappucino): ")
@@ -34,14 +42,7 @@ while state:
         else:
             water = water - 50
             coffee = coffee - 18
-            quarters = int(input("How many quarters: "))
-            sum = sum + (quarters * 25)
-            dime = int(input("How many dimes: "))
-            sum = sum + (dime*10)
-            nickel = int(input("How many nickel: "))
-            sum = sum + (nickel*5)
-            penny = int(input("How many pennies: "))
-            sum = sum + (penny*1)
+            sum = payment(quarter, dime, nickel, penny)
             if sum > priceEspresso:
                 print(f"Here is {(sum - priceEspresso)/100}$ change")
                 print("Here is your espresso. Enjoy!")
@@ -72,13 +73,10 @@ while state:
             water = water - 200
             coffee = coffee - 24
             quarters = int(input("How many quarters: "))
-            sum = sum + (quarters * 25)
             dime = int(input("How many dimes: "))
-            sum = sum + (dime * 10)
             nickel = int(input("How many nickel: "))
-            sum = sum + (nickel * 5)
             penny = int(input("How many pennies: "))
-            sum = sum + (penny * 1)
+            sum = payment(quarter, dime, nickel, penny)
             if sum > priceLatte:
                 print(f"Here is {(sum - priceLatte)/100}$ change")
                 print("Here is your latte. Enjoy!")
@@ -109,13 +107,10 @@ while state:
             water = water - 250
             coffee = coffee - 24
             quarters = int(input("How many quarters: "))
-            sum = sum + (quarters * 25)
             dime = int(input("How many dimes: "))
-            sum = sum + (dime * 10)
             nickel = int(input("How many nickel: "))
-            sum = sum + (nickel * 5)
             penny = int(input("How many pennies: "))
-            sum = sum + (penny * 1)
+            sum = payment(quarter, dime, nickel, penny)
             if sum > priceCappucino:
                 print(f"Here is {(sum - priceCappucino)/100}$ change")
                 print("Here is your cappucino. Enjoy!")
@@ -129,7 +124,3 @@ while state:
     elif choice.lower() == "quit":
         state = False
         break        
-
-
-
-
