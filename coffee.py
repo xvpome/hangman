@@ -15,28 +15,26 @@ def program():
 
     class Pay:
         
-        dime = 0
-        nickel = 0
-        quarter = 0
-        penny = 0
 
-        def payment(self, quarters, dimes, nickels, pennies, sum = 0):
+        def payment(self, quarters:int, dimes:int, nickels:int, pennies:int, sum = 0) -> int:
+            
             sum = sum + (quarters*25)
             sum = sum + (dimes*10)
             sum = sum + (nickels*5)
             sum = sum + (pennies*1)
+            
             return sum
 
     while state:
         
         mainObject = Pay()
-        dime = mainObject.dime
-        quarters = mainObject.quarter
-        nickel = mainObject.nickel
-        penny = mainObject.penny
+        
+        dime = 0
+        quarters = 0
+        nickel = 0
+        penny = 0
 
-        
-        
+      
         choice = input("What would you like? (espresso/latte/cappucino): ")
 
         if choice.lower() == "report":
