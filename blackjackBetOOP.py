@@ -1,5 +1,4 @@
 import random
-from symbol import continue_stmt
 
 class BankAccount:
     
@@ -14,13 +13,20 @@ class BankAccount:
         return f"{self.balance}$"
     
     def bet_money(self):
+        
         money_state = True
+        
         while money_state is True:
+            
             money = int(input("Enter money to bet: "))
+            
             if money > self.balance:
                 print("You don't have enough money in your balance ")
+                
             elif money == 0:
+                
                 print("You can't bet 0$!")
+                
             else:
                 
                 bet = self.bet + money
@@ -40,8 +46,10 @@ account_number = random.randint(10000000, 100000000000)
 month = random.randint(1,12)
 day = random.randint(1,30)
 year = random.randint(2020,2023)
+
 if month == 2 and day > 28:
     day = 28
+    
 date_of_open = str(day) + "/" + str(month) + "/" + str(year)
 account = BankAccount(balance, account_number, date_of_open)
 
@@ -51,8 +59,10 @@ while programState == True:
 
     if profit < 0:
         print(f"You have lost {profit}$")
+        
     elif profit > 0:
         print(f"You are in a profit of {profit}$")
+        
     else:
         print("You haven't made or lost any money! ")
 
