@@ -86,6 +86,7 @@ while programState == True:
                 print(f"Account Number: {account.account_number}")
                 print(f"Date Of Opening: {account.date_of_open}")
 
+            print()
             if profit < 0:
                 print(f"You have lost {profit}$")
             elif profit > 0:
