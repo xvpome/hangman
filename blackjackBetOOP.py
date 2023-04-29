@@ -1,5 +1,6 @@
 import random
 
+
 class BankAccount:
     
     def __init__(self, balance, account_number, date_of_open, bet = 0):
@@ -12,28 +13,22 @@ class BankAccount:
     def check_balance(self):
         return f"{self.balance}$"
     
+    def deposit(self, money):
+        self.balance = self.balance + money
+        print(f"You deposited {money}$")
+        
+    def withdraw(self, money):
+        self.balance = self.balance - money
+        print(f"You withdrew {money}$")
+        
     def bet_money(self):
-        
         money_state = True
-        
         while money_state is True:
-            
             money = int(input("Enter money to bet: "))
-            
             if money > self.balance:
                 print("You don't have enough money in your balance ")
-                
-                choiceInfo = input("Would you like to check your account info? ")
-                
-                if choiceInfo.lower() == "yes" or choiceInfo.lower() == "y":
-                    print(f"Balance {account.balance}$")
-                    print(f"IBAN {account.account_number}")
-                    print(f"Date of opening {account.date_of_open}")
-                
             elif money == 0:
-                
                 print("You can't bet 0$!")
-                
             else:
                 
                 bet = self.bet + money
@@ -53,26 +48,51 @@ account_number = random.randint(10000000, 100000000000)
 month = random.randint(1,12)
 day = random.randint(1,30)
 year = random.randint(2020,2023)
-
 if month == 2 and day > 28:
     day = 28
-    
 date_of_open = str(day) + "/" + str(month) + "/" + str(year)
 account = BankAccount(balance, account_number, date_of_open)
+bankState = False
 
 programState = True
 
 while programState == True:
+    
+    bankChoice = input("Would you like to check your bank stuff? ")
+    if bankChoice.lower() == "yes" or bankChoice.lower() == "y":
+        bankState = True
+        while bankState is True:
+            userChoice = int(input("Would you like to: 1 - Check Balance; 2 - Deposit; 3 - Withdraw; 4 - Quit: "))
+            
+            if userChoice == 1:
+                
+                print(account.check_balance() )
+                
+            elif userChoice == 2:
+                
+                money = int(input("Enter cash to deposit: "))
+                account.deposit(money)
+                
+            elif userChoice == 3:
+                
+                money = int(input("Enter cash to withdraw: "))
+                account.withdraw(money)
+                
+            elif userChoice == 4:
+                bankState = False
+                break
+            elif userChoice.lower() == 5:
+                print(f"Balance: {account.balance}$")
+                print(f"Account Number: {account.account_number}")
+                print(f"Date Of Opening: {account.date_of_open}")
 
-    if profit < 0:
-        print(f"You have lost {profit}$")
+            if profit < 0:
+                print(f"You have lost {profit}$")
+            elif profit > 0:
+                print(f"You are in a profit of {profit}$")
+            else:
+                print("You haven't made or lost any money! ")
         
-    elif profit > 0:
-        print(f"You are in a profit of {profit}$")
-        
-    else:
-        print("You haven't made or lost any money! ")
-
     state = False
     cardPoints = [2,3,4,5,6,7,8,9,10,10,10,10,11]
     computerDraw = ['yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
@@ -195,9 +215,8 @@ while programState == True:
             print(f"Your cards were {userCardList}")
             print()
             break
-            
+        
     if account.balance == 0:
         print(f"You can play anymore you balance is {account.balance}$")
         programState = False
         break
-
