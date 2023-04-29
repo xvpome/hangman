@@ -23,6 +23,13 @@ class BankAccount:
             if money > self.balance:
                 print("You don't have enough money in your balance ")
                 
+                choiceInfo = input("Would you like to check your account info? ")
+                
+                if choiceInfo.lower() == "yes" or choiceInfo.lower() == "y":
+                    print(f"Balance {account.balance}$")
+                    print(f"IBAN {account.account_number}")
+                    print(f"Date of opening {account.date_of_open}")
+                
             elif money == 0:
                 
                 print("You can't bet 0$!")
@@ -188,3 +195,9 @@ while programState == True:
             print(f"Your cards were {userCardList}")
             print()
             break
+            
+    if account.balance == 0:
+        print(f"You can play anymore you balance is {account.balance}$")
+        programState = False
+        break
+
