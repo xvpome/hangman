@@ -218,6 +218,6 @@ while programState == True:
             break
         
     if account.balance == 0:
-        print(f"You can play anymore you balance is {account.balance}$")
+        print(f"You can play anymore  becase your balance is {account.balance}$")
         programState = False
         break
